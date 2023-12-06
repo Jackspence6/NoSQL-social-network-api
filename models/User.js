@@ -2,35 +2,43 @@
 const mongoose = require("mongoose");
 
 // User Schema
-const userSchema = new mongoose.Schema({
-	username: {
-		type: String,
-		unique: true,
-		required: true,
-		trim: true,
-	},
-	email: {
-		type: String,
-		required: true,
-		unique: true,
-		// Email validation
-		match: [/.+\@.+\..+/, "Please enter a valid email address!"],
-	},
-	thoughts: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			// Referencing the Thought model
-			ref: "Thought",
+const userSchema = new mongoose.Schema(
+	{
+		username: {
+			type: String,
+			unique: true,
+			required: true,
+			trim: true,
 		},
-	],
-	friends: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			// Self-referencing the User model
-			ref: "User",
+		email: {
+			type: String,
+			required: true,
+			unique: true,
+			// Email validation
+			match: [/.+\@.+\..+/, "Please enter a valid email address!"],
 		},
-	],
-});
+		thoughts: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				// Referencing the Thought model
+				ref: "Thought",
+			},
+		],
+		friends: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				// Self-referencing the User model
+				ref: "User",
+			},
+		],
+	},
+	{
+		toJSON: {
+			virtuals: true,
+		},
+		id: false,
+	}
+);
 
 // Defining the friendCount virtual
 userSchema.virtual("friendCount").get(function () {
