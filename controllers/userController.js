@@ -20,7 +20,7 @@ module.exports = {
 		}
 	},
 
-	// GET a single user by their _id and their populated thought and friend data
+	// GET a single user by their _id and their populated thoughts and friends data
 	async getSingleUser(req, res) {
 		try {
 			const userData = await User.findById(req.params.id)
@@ -46,6 +46,30 @@ module.exports = {
 		try {
 			const userData = await User.create(req.body);
 			response.status(200).json(userData);
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	},
+
+	// PUT to update a user by their _id
+	async updateUser(req, res) {
+		try {
+			// findOneAndUpdate method params
+			const filter = { id: req.params.id };
+			const update = { $set: req.body };
+			// Enforcing validators & returning updated object to user
+			const options = { runValidators: true, new: true };
+
+			const userData = await User.findOneAndUpdate(filter, update, options);
+
+			// Checking if the User exists
+			if (!userData) {
+				res.status(400).json({
+					message: "I can't seem to find the User you're trying to update!",
+				});
+				return;
+			}
+			res.status(200).json(userData);
 		} catch (err) {
 			res.status(500).json(err);
 		}
