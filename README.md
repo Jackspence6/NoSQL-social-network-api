@@ -56,10 +56,22 @@ npm run seed
 
 ## Usage
 
-To start the server and connect to the MongoDB database:
+1. **Start the Server:**
 
 ```
 npm start
+```
+
+2. **Development Mode:**
+
+```
+npm run dev
+```
+
+3. **Seeding the Database:**
+
+```
+npm run seed
 ```
 
 The application will be running on `localhost:3001`.
