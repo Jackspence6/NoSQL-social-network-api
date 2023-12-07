@@ -31,4 +31,33 @@ module.exports = {
 			res.status(500).json(err);
 		}
 	},
+
+	// DELETE to pull and remove a reaction by the reaction's reactionId value
+	async deleteReaction(req, res) {
+		try {
+			// findOneAndUpdate method params
+			const filter = { id: req.params.id };
+			const update = { $pull: { reactions: { _id: req.params.id } } };
+			// Enforcing validators & returning updated object to user
+			const options = { runValidators: true, new: true };
+
+			const reactionData = await Thought.findOneAndUpdate(
+				filter,
+				update,
+				options
+			);
+
+			// Checking if Reaction exists
+			if (!reactionData) {
+				res.status(400).json({
+					message:
+						"I can't seem to find the Thought or Reaction you're trying to delete!",
+				});
+				return;
+			}
+			res.status(200).json(reactionData);
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	},
 };
