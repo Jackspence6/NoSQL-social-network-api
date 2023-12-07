@@ -49,4 +49,32 @@ module.exports = {
 			res.status(500).json(err);
 		}
 	},
+
+	// PUT to update a thought by its _id
+	async updateThought(req, res) {
+		try {
+			// findOneAndUpdate method params
+			const filter = { id: req.params.id };
+			const update = { $set: req.body };
+			// Enforcing validators & returning updated object to user
+			const options = { runValidators: true, new: true };
+
+			const thoughtData = await Thought.findOneAndUpdate(
+				filter,
+				update,
+				options
+			);
+
+			// Checking if Thought exists
+			if (!thoughtData) {
+				res.status(400).json({
+					message: "I can't seem to find the Thought you're trying to update!",
+				});
+				return;
+			}
+			res.status(200).json(thoughtData);
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	},
 };
