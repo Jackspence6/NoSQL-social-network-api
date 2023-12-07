@@ -77,4 +77,26 @@ module.exports = {
 			res.status(500).json(err);
 		}
 	},
+
+	// DELETE to remove a thought by its _id
+	async deleteThought(req, res) {
+		try {
+			// findOneAndDelete method params
+			const filter = { id: req.params.id };
+			const options = { new: true };
+
+			const thoughtData = await Thought.findOneAndDelete(filter, options);
+
+			// Checking if Thought exists
+			if (!thoughtData) {
+				res.status(400).json({
+					message: "I can't seem to find the Thought you're trying to delete!",
+				});
+				return;
+			}
+			res.status(200).json(thoughtData);
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	},
 };
