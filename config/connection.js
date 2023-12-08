@@ -6,10 +6,7 @@ const connectionString =
 	process.env.DB_URI || "mongodb://localhost:27017/socialNetworkDB";
 
 // Connecting to MongoDB
-connect(connectionString, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+connect(connectionString);
 
 // Exports
 module.exports = connection;
