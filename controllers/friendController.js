@@ -7,8 +7,8 @@ module.exports = {
 	async addFriend(req, res) {
 		try {
 			// findOneAndUpdate method params
-			const filter = { id: req.params.id };
-			const update = { $addToSet: { friends: req.body } };
+			const filter = { _id: req.params.id };
+			const update = { $addToSet: { friends: req.body.friendId } };
 			// Enforcing validators & returning updated object to user
 			const options = { runValidators: true, new: true };
 
@@ -32,7 +32,7 @@ module.exports = {
 	async removeFriend(req, res) {
 		try {
 			// findOneAndUpdate method params
-			const filter = { id: req.params.id };
+			const filter = { _id: req.params.id };
 			const update = { $pull: { friends: req.body.friendId } };
 			// Enforcing validators & returning updated object to user
 			const options = { runValidators: true, new: true };

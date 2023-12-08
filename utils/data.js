@@ -12,6 +12,18 @@ const users = [
 		thoughts: [],
 		friends: [],
 	},
+	{
+		username: "User3",
+		email: "user3@example.com",
+		thoughts: [],
+		friends: [],
+	},
+	{
+		username: "User4",
+		email: "user4@example.com",
+		thoughts: [],
+		friends: [],
+	},
 ];
 
 // Exports

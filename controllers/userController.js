@@ -55,7 +55,7 @@ module.exports = {
 	async updateUser(req, res) {
 		try {
 			// findOneAndUpdate method params
-			const filter = { id: req.params.id };
+			const filter = { _id: req.params.id };
 			const update = { $set: req.body };
 			// Enforcing validators & returning updated object to user
 			const options = { runValidators: true, new: true };
@@ -80,7 +80,7 @@ module.exports = {
 	async deleteUser(req, res) {
 		try {
 			// findOneAndDelete method params
-			const filter = { id: req.params.id };
+			const filter = { _id: req.params.id };
 			const options = { new: true };
 
 			const userData = await User.findOneAndDelete(filter, options);

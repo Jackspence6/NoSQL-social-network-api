@@ -54,7 +54,7 @@ module.exports = {
 	async updateThought(req, res) {
 		try {
 			// findOneAndUpdate method params
-			const filter = { id: req.params.id };
+			const filter = { _id: req.params.id };
 			const update = { $set: req.body };
 			// Enforcing validators & returning updated object to user
 			const options = { runValidators: true, new: true };
@@ -82,7 +82,7 @@ module.exports = {
 	async deleteThought(req, res) {
 		try {
 			// findOneAndDelete method params
-			const filter = { id: req.params.id };
+			const filter = { _id: req.params.id };
 			const options = { new: true };
 
 			const thoughtData = await Thought.findOneAndDelete(filter, options);
