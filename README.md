@@ -12,6 +12,7 @@ This App is a social network API using MongoDB, Express.js, and Mongoose ODM. Fe
 - [Usage](#usage)
 - [API Routes](#api-routes)
 - [Data Models](#data-models)
+- [Demonstration](#demonstration)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -128,6 +129,73 @@ The application will be running on `localhost:3001`.
 - Body (string, required, max 280 characters)
 - Username (string, required)
 - CreatedAt (date, default to now, formatted)
+
+## Demonstration
+
+### User Routes Demonstration
+
+`GET /api/users` - Retrieve all users.
+
+![Animation cycles through Route to Retrieve all users.](./demonstration/getAllUsers.gif)
+
+`GET /api/users/:id` - Retrieve a user by ID with populated thought and friend data.
+
+![Animation cycles through Route to Retrieve a user by ID with populated thought and friend data.](./demonstration/getSingleUser.gif)
+
+`POST /api/users` - Create a new user.
+
+![Animation cycles through Route to Create a new user.](./demonstration/createUser.gif)
+
+`PUT /api/users/:id` - Update a user by ID.
+
+![Animation cycles through Route to Update a user by ID.](./demonstration/updateUser.gif)
+
+`DELETE /api/users/:id` - Delete a user by ID.
+
+![Animation cycles through Route to Delete a user by ID.](./demonstration/deleteUser.gif)
+
+### Friend Routes Demonstration
+
+`POST /api/users/:userId/friends/:friendId` - Add a friend to a user's list.
+
+![Animation cycles through Route to Add a friend to a user's list.](./demonstration/addFriend.gif)
+
+`DELETE /api/users/:userId/friends/:friendId` - Remove a friend from a user's list.
+
+![Animation cycles through Route to Remove a friend from a user's list.](./demonstration/deleteFriend.gif)
+
+### Thought Routes Demonstration
+
+`GET /api/thoughts` - Retrieve all thoughts.
+
+![Animation cycles through Route to Retrieve all thoughts.](./demonstration/getAllThoughts.gif)
+
+`GET /api/thoughts/:id` - Retrieve a thought by ID.
+
+![Animation cycles through Route to Retrieve a thought by ID.](./demonstration/getSingleThought.gif)
+
+`POST /api/thoughts` - Create a new thought.
+
+![Animation cycles through Route to Create a new thought.](./demonstration/createThought.gif)
+
+`PUT /api/thoughts/:id` - Update a thought by ID.
+
+![Animation cycles through Route to Update a thought by ID.](./demonstration/updateThought.gif)
+
+`DELETE /api/thoughts/:id` - Delete a thought by ID.
+
+![Animation cycles through Route to Delete a thought by ID.](./demonstration/deleteThought1.gif)
+![Animation cycles through Route to Delete a thought by ID.](./demonstration/deleteThought2.gif)
+
+### Reaction Routes Demonstration
+
+`POST /api/thoughts/:thoughtId/reactions` - Add a reaction to a thought.
+
+![Animation cycles through Route to Add a reaction to a thought.](./demonstration/addReaction.gif)
+
+`DELETE /api/thoughts/:thoughtId/reactions/:reactionId` - Remove a reaction from a thought.
+
+![Animation cycles through Route to Remove a reaction from a thought.](./demonstration/deleteReaction.gif)
 
 ## Contributing
 
