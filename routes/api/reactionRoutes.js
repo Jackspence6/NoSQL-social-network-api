@@ -7,7 +7,10 @@ const {
 
 // API Routes
 // /api/thoughts/:thoughtId/reactions
-router.route("/").post(createReaction).delete(deleteReaction);
+router.route("/:thoughtId/reactions").post(createReaction);
+
+// /api/thoughts/:thoughtId/reactions/:reactionId
+router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
 
 // Exports
 module.exports = router;

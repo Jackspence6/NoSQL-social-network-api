@@ -7,8 +7,8 @@ module.exports = {
 	async createReaction(req, res) {
 		try {
 			// findOneAndUpdate method params
-			const filter = { _id: req.params.id };
-			const update = { $addToSet: { friends: req.body } };
+			const filter = { _id: req.params.thoughtId };
+			const update = { $addToSet: { reactions: req.body } };
 			// Enforcing validators & returning updated object to user
 			const options = { runValidators: true, new: true };
 
@@ -36,8 +36,8 @@ module.exports = {
 	async deleteReaction(req, res) {
 		try {
 			// findOneAndUpdate method params
-			const filter = { _id: req.params.id };
-			const update = { $pull: { reactions: { _id: req.params.id } } };
+			const filter = { _id: req.params.thoughtId };
+			const update = { $pull: { reactions: { _id: req.params.reactionId } } };
 			// Enforcing validators & returning updated object to user
 			const options = { runValidators: true, new: true };
 

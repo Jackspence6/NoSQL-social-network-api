@@ -9,7 +9,7 @@ const reactionRoutes = require("./reactionRoutes");
 router.use("/users", userRoutes);
 router.use("/users/:id/friends", friendRoutes);
 router.use("/thoughts", thoughtRoutes);
-router.use("/thoughts/:id/reactions", reactionRoutes);
+router.use("/thoughts", reactionRoutes);
 
 // Exports
 module.exports = router;
